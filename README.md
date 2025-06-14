@@ -1,9 +1,13 @@
 # Installation
 
-## Quick install
-
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/dotfiles/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/yelloweq/dotfiles/main/install.sh | bash
+```
+or  
+```bash
+git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
 ```
 
 
