@@ -2,47 +2,27 @@
 return {
   'echasnovski/mini.nvim',
   config = function()
-    -- Better Around/Inside textobjects
-    --
-    -- Examples:
-    --  - va)  - [V]isually select [A]round [)]paren
-    --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-    --  - ci'  - [C]hange [I]nside [']quote
     require('mini.ai').setup { n_lines = 500 }
-
-    -- Add/delete/replace surroundings (brackets, quotes, etc.)
-    --
-    -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-    -- - sd'   - [S]urround [D]elete [']quotes
-    -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
     -- require('mini.move').setup()
     require('mini.notify').setup()
     require('mini.icons').setup()
-    -- require('mini.animate').setup()
-    -- require('mini.files').setup {
-    --   windows = {
-    --     -- Floating window with rounded border
-    --     preview = true,
-    --     width_focus = 40,
-    --     width_nofocus = 30,
-    --     height = 100,
-    --     border = 'rounded',
-    --   },
-    --   options = {
-    --     -- Show hidden files
-    --     show_hidden = true,
-    --     -- Use icons if available
-    --     use_as_default_explorer = true,
-    --   },
-    -- }
+    require('mini.files').setup {
+      windows = {
+        preview = true,
+        width_focus = 40,
+        width_preview = 50,
+        width_nofocus = 30,
+        height = 100,
+        border = 'rounded',
+      },
+      options = {
+        show_hidden = true,
+        use_as_default_explorer = true,
+      },
+    }
     require('mini.starter').setup()
-
-    -- Simple and easy statusline.
-    --  You could remove this setup call if you don't like it,
-    --  and try some other statusline plugin
     local statusline = require 'mini.statusline'
-    -- set use_icons to true if you have a Nerd Font
     statusline.setup { use_icons = vim.g.have_nerd_font }
 
     -- You can configure sections in the statusline by overriding their
@@ -53,14 +33,20 @@ return {
       return '%2l:%-2v'
     end
 
+    local mf = require 'mini.files'
+
     -- mini keymaps
-    -- vim.keymap.set('n', '<leader>n', function()
-    --   local mf = require 'mini.files'
-    --   if not mf.close() then
-    --     mf.open(vim.loop.cwd())
-    --   end
-    -- end, { desc = 'Toggle mini.files in current directory' })
-    -- ... and there is more!
-    --  Check out: https://github.com/echasnovski/mini.nvim
+    vim.keymap.set('n', '<leader>fm', function()
+      local _ = mf.close() or mf.open(vim.api.nvim_buf_get_name(0), false)
+      vim.defer_fn(function()
+        mf.reveal_cwd()
+      end, 30)
+    end, { desc = 'Toggle mini.files at current file' })
+
+    vim.keymap.set('n', '<leader>fM', function()
+      if not mf.close() then
+        mf.open(vim.fn.getcwd())
+      end
+    end, { desc = 'Toggle mini.files at project root' })
   end,
 }
