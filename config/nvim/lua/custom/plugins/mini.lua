@@ -37,11 +37,19 @@ return {
 
     -- mini keymaps
     vim.keymap.set('n', '<leader>fm', function()
-      local _ = mf.close() or mf.open(vim.api.nvim_buf_get_name(0), false)
+      local current_file = vim.api.nvim_buf_get_name(0)
+
+      local path_to_open
+      if current_file ~= '' and vim.fn.filereadable(current_file) == 1 then
+        path_to_open = current_file
+      else
+        path_to_open = vim.fn.getcwd()
+      end
+      local _ = mf.close() or mf.open(path_to_open)
       vim.defer_fn(function()
         mf.reveal_cwd()
       end, 30)
-    end, { desc = 'Toggle mini.files at current file' })
+    end, { desc = 'Toggle mini.files at current file/CWD' })
 
     vim.keymap.set('n', '<leader>fM', function()
       if not mf.close() then
