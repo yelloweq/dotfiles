@@ -2,9 +2,6 @@
 vim.lsp.enable({
     "lua-ls",
     "gopls",
-    "zls",
-    "ts-ls",
-    "rust-analyzer",
     "intelephense",
     "tailwindcss",
     "html-ls",

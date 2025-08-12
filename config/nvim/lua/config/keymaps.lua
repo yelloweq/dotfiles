@@ -34,32 +34,14 @@ vim.keymap.set("n", "YY", "va{Vy", opts)
 vim.keymap.set("n", "j", "gj", opts)
 vim.keymap.set("n", "k", "gk", opts)
 
--- Exit on jj and jk
-vim.keymap.set("i", "jj", "<ESC>", opts)
-vim.keymap.set("i", "jk", "<ESC>", opts)
-
--- Move to start/end of line
-vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
-vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
-
 -- Navigate buffers
 vim.keymap.set("n", "<Right>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<Left>", ":bprevious<CR>", opts)
 
--- Panes resizing
-vim.keymap.set("n", "+", ":vertical resize +5<CR>")
-vim.keymap.set("n", "_", ":vertical resize -5<CR>")
-vim.keymap.set("n", "=", ":resize +5<CR>")
-vim.keymap.set("n", "-", ":resize -5<CR>")
-
--- Map enter to ciw in normal mode
-vim.keymap.set("n", "<CR>", "ciw", opts)
-vim.keymap.set("n", "<BS>", "ci", opts)
-
-vim.keymap.set("n", "n", "nzzv", opts)
-vim.keymap.set("n", "N", "Nzzv", opts)
-vim.keymap.set("n", "*", "*zzv", opts)
-vim.keymap.set("n", "#", "#zzv", opts)
+vim.keymap.set("n", "n", "nzz", opts)
+vim.keymap.set("n", "N", "Nzz", opts)
+vim.keymap.set("n", "*", "*zz", opts)
+vim.keymap.set("n", "#", "#zz", opts)
 vim.keymap.set("n", "g*", "g*zz", opts)
 vim.keymap.set("n", "g#", "g#zz", opts)
 
@@ -78,18 +60,13 @@ vim.keymap.set("n", "<C-x>", "dd", opts)
 -- Select all
 vim.keymap.set("n", "<C-a>", "ggVG", opts)
 
--- write file in current directory
--- :w %:h/<new-file-name>
-vim.keymap.set("n", "<C-n>", ":w %:h/", opts)
-
--- delete forward
--- w{number}dw
--- delete backward
--- w{number}db
-
 vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
 -- Get highlighted line numbers in visual mode
 vim.keymap.set("v", "<leader>ln", ':lua require("config.utils").get_highlighted_line_numbers()<CR>', opts)
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
+
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { 
+  desc = 'Rename symbol' 
+})

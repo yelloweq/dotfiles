@@ -6,7 +6,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
-    explorer = { enabled = true },
+    explorer = { enabled = false },
     indent = { enabled = false },
     input = { enabled = true },
     notifier = {
@@ -31,6 +31,14 @@ return {
     },
   },
   keys = {
+    -- Rename
+    {
+      "<leader>rN",
+      function()
+        Snacks.rename.rename_file()
+      end,
+      desc = "Rename current file",
+    },
     -- Top Pickers & Explorer
     {
       "<leader><space>",
@@ -60,19 +68,12 @@ return {
       end,
       desc = "Notification History",
     },
-    {
-      "<leader>e",
-      function()
-        Snacks.explorer()
-      end,
-      desc = "File Explorer",
-    },
     -- find
     {
       "<leader>o",
       function()
         Snacks.picker.buffers({
-          win = {
+         win = {
             input = {
               keys = {
                 ["dd"] = "bufdelete",
@@ -441,13 +442,6 @@ return {
         Snacks.bufdelete()
       end,
       desc = "Delete Buffer",
-    },
-    {
-      "<leader>cR",
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = "Rename File",
     },
     {
       "<leader>gB",
