@@ -10,9 +10,7 @@ return {
                 -- LSP servers (matching your vim.lsp.enable() config)
                 "lua-language-server",         -- Lua LSP
                 "gopls",                       -- Go LSP
-                "zls",                         -- Zig LSP
                 "typescript-language-server",  -- TypeScript LSP
-                "rust-analyzer",               -- Rust LSP
                 "intelephense",                -- PHP LSP
                 "tailwindcss-language-server", -- Tailwind CSS LSP
                 "html-lsp",                    -- HTML LSP

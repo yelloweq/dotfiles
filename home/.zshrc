@@ -11,7 +11,6 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # zinit plugins
-zinit light starship/starship
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -21,8 +20,8 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 zinit ice as"command" from"gh-r" \
-          atclone="./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull="%atclone" src="init.zsh"
+          atload'eval "$(starship init zsh)"'
+zinit load starship/starship
 
 # FZF installation via Zinit
 zinit ice from"gh-r" as"program"
