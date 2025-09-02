@@ -70,3 +70,6 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { 
   desc = 'Rename symbol' 
 })
+
+
+

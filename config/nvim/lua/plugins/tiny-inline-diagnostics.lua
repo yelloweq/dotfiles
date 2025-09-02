@@ -1,34 +1,34 @@
 return {
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000,    -- needs to be loaded in first
+    'rachartier/tiny-inline-diagnostic.nvim',
+    enabled = false,
+    event = 'VeryLazy', -- Or `LspAttach`
+    priority = 1000, -- needs to be loaded in first
     config = function()
-      -- Default configuration
-      require("tiny-inline-diagnostic").setup({
+      require('tiny-inline-diagnostic').setup {
         -- Style preset for diagnostic messages
         -- Available options:
         -- "modern", "classic", "minimal", "powerline",
         -- "ghost", "simple", "nonerdfont", "amongus"
-        preset = "classic",
+        preset = 'ghost',
 
-        transparent_bg = false,     -- Set the background of the diagnostic to transparent
-        transparent_cursorline = false, -- Set the background of the cursorline to transparent (only one the first diagnostic)
+        transparent_bg = false,
+        transparent_cursorline = false,
 
         hi = {
-          error = "DiagnosticError", -- Highlight group for error messages
-          warn = "DiagnosticWarn", -- Highlight group for warning messages
-          info = "DiagnosticInfo", -- Highlight group for informational messages
-          hint = "DiagnosticHint", -- Highlight group for hint or suggestion messages
-          arrow = "NonText",       -- Highlight group for diagnostic arrows
+          error = 'DiagnosticError',
+          warn = 'DiagnosticWarn',
+          info = 'DiagnosticInfo',
+          hint = 'DiagnosticHint',
+          arrow = 'NonText',
 
           -- Background color for diagnostics
           -- Can be a highlight group or a hexadecimal color (#RRGGBB)
-          background = "CursorLine",
+          background = 'CursorLine',
 
           -- Color blending option for the diagnostic background
           -- Use "None" or a hexadecimal color (#RRGGBB) to blend with another color
-          mixing_color = "None",
+          mixing_color = 'None',
         },
 
         options = {
@@ -69,7 +69,7 @@ return {
           -- }
           multilines = {
             -- Enable multiline diagnostic messages
-            enabled = false,
+            enabled = true,
 
             -- Always show messages on all lines for multiline diagnostics
             always_show = false,
@@ -91,7 +91,7 @@ return {
             -- "wrap" - Split long messages into multiple lines
             -- "none" - Do not truncate messages
             -- "oneline" - Keep the message on a single line, even if it's long
-            mode = "wrap",
+            mode = 'wrap',
 
             -- Trigger wrapping to occur this many characters earlier when mode == "wrap".
             -- Increase this value appropriately if you notice that the last few characters
@@ -115,7 +115,6 @@ return {
           -- end
           format = nil,
 
-
           virt_texts = {
             -- Priority for virtual text display
             priority = 2048,
@@ -138,9 +137,9 @@ return {
           -- You should not change this unless the plugin does not work with your configuration
           overwrite_events = nil,
         },
-        disabled_ft = {}                               -- List of filetypes to disable the plugin
-      })
-      vim.diagnostic.config({ virtual_text = false })  -- Only if needed in your configuration, if you already have native LSP diagnostics
-    end
-  }
+        disabled_ft = {}, -- List of filetypes to disable the plugin
+      }
+      vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
 }

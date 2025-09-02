@@ -88,13 +88,6 @@ return {
         desc = "Preview Hunk",
       },
       {
-        "<leader>Gr",
-        function()
-          require("gitsigns").reset_hunk()
-        end,
-        desc = "Reset Hunk",
-      },
-      {
         "<leader>GR",
         function()
           require("gitsigns").reset_buffer()
@@ -107,6 +100,13 @@ return {
           require("gitsigns").next_hunk({ navigation_message = false })
         end,
         desc = "Next Hunk",
+      },
+      {
+        "<leader>Gr",
+        function()
+          require("gitsigns").reset_hunk()
+        end,
+        desc = "Reset Hunk",
       },
       {
         "<leader>Gs",

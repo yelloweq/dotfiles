@@ -39,14 +39,6 @@ return {
       end,
       desc = "Rename current file",
     },
-    -- Top Pickers & Explorer
-    {
-      "<leader><space>",
-      function()
-        Snacks.picker.smart()
-      end,
-      desc = "Smart Find Files",
-    },
     {
       "<leader>/",
       function()
@@ -101,13 +93,6 @@ return {
       desc = "Search Files",
     },
     {
-      "<leader>fg",
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = "Find Git Files",
-    },
-    {
       "<leader>fp",
       function()
         Snacks.picker.projects()
@@ -115,11 +100,11 @@ return {
       desc = "Projects",
     },
     {
-      "<leader>sr",
+      "<leader>sR",
       function()
         Snacks.picker.recent()
       end,
-      desc = "Recent",
+      desc = "Recently Opened Files",
     },
     -- git
     {
@@ -329,11 +314,11 @@ return {
       desc = "Quickfix List",
     },
     {
-      "<leader>sR",
+      "<leader>sr",
       function()
         Snacks.picker.resume()
       end,
-      desc = "Resume",
+      desc = "Resume Last Search",
     },
     {
       "<leader>su",

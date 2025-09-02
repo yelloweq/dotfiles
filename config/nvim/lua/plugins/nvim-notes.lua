@@ -1,11 +1,11 @@
 return {
   'adibhanna/nvim-notes',
   dependencies = {
-    'MunifTanjim/nui.nvim', -- Required for UI components
+    'MunifTanjim/nui.nvim', 
   },
   config = function()
     require('nvim-notes').setup({
-      vault_path = '~/notes', -- Where to store notes
+      vault_path = '~/notes', 
     })
   end,
 }

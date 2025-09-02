@@ -75,6 +75,7 @@ return {
                             ["ap"] = { query = "@parameter.outer", desc = "around parameter" },
                             ["ip"] = { query = "@parameter.inner", desc = "inside a parameter" },
                         },
+                        include_surrounding_whitespace = false,
                         selection_modes = {
                             ["@parameter.outer"] = "v",   -- charwise
                             ["@parameter.inner"] = "v",   -- charwise
@@ -83,7 +84,6 @@ return {
                             ["@loop.outer"] = "V",        -- linewise
                             ["@class.outer"] = "<c-v>",   -- blockwise
                         },
-                        include_surrounding_whitespace = false,
                     },
                     move = {
                         enable = true,
@@ -97,15 +97,6 @@ return {
                             ["]f"] = { query = "@function.outer", desc = "Next function" },
                             ["]c"] = { query = "@class.outer", desc = "Next class" },
                             ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
-                        },
-                    },
-                    swap = {
-                        enable = true,
-                        swap_next = {
-                            ["<leader>a"] = "@parameter.inner",
-                        },
-                        swap_previous = {
-                            ["<leader>A"] = "@parameter.inner",
                         },
                     },
                 },

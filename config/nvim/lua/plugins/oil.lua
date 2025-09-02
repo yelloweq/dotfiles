@@ -12,7 +12,7 @@ return {
     skip_confirm_for_simple_edits = true,
     float = {
       padding = 2,
-      max_width = 90,
+      max_width = 180,
       max_height = 30,
     },
     keymaps = {

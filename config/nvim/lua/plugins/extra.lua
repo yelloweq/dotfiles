@@ -76,26 +76,8 @@ return {
         },
       },
     },
-    -- {
-    --   "saghen/blink.cmp",
-    --   opts = {
-    --     sources = {
-    --       -- add lazydev to your completion providers
-    --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-    --       providers = {
-    --         lazydev = {
-    --           name = "LazyDev",
-    --           module = "lazydev.integrations.blink",
-    --           -- make lazydev completions top priority (see `:h blink.cmp`)
-    --           score_offset = 100,
-    --         },
-    --       },
-    --     },
-    --   },
-    -- }
   },
 
-  -- editor config support
   {
     "editorconfig/editorconfig-vim",
   },
@@ -115,38 +97,6 @@ return {
     },
   },
 
-  -- {
-  --   "utilyre/barbecue.nvim",
-  --   name = "barbecue",
-  --   version = "*",
-  --   dependencies = {
-  --     "SmiteshP/nvim-navic",
-  --     "nvim-tree/nvim-web-devicons", -- optional dependency
-  --   },
-  --   opts = {
-  --     -- configurations go here
-  --   },
-  --   config = function()
-  --     require("barbecue").setup({
-  --       create_autocmd = false, -- prevent barbecue from updating itself automatically
-  --     })
-  --
-  --     vim.api.nvim_create_autocmd({
-  --       "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-  --       "BufWinEnter",
-  --       "CursorHold",
-  --       "InsertLeave",
-  --
-  --       -- include this if you have set `show_modified` to `true`
-  --       -- "BufModifiedSet",
-  --     }, {
-  --       group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-  --       callback = function()
-  --         require("barbecue.ui").update()
-  --       end,
-  --     })
-  --   end,
-  -- },
   -- persist sessions
   {
     "folke/persistence.nvim",
@@ -190,30 +140,5 @@ return {
     enabled = true,
     opts = {},
     lazy = true,
-  },
-
-  {
-    "fladson/vim-kitty",
-    "MunifTanjim/nui.nvim",
-  },
-  {
-    "nvchad/showkeys",
-    cmd = "ShowkeysToggle",
-    opts = {
-      timeout = 1,
-      maxkeys = 6,
-      -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
-      position = "bottom-right",
-    },
-
-    keys = {
-      {
-        "<leader>ut",
-        function()
-          vim.cmd("ShowkeysToggle")
-        end,
-        desc = "Show key presses",
-      },
-    },
   },
 }

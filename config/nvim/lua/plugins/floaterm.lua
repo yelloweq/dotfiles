@@ -13,6 +13,6 @@ return {
     vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>', { silent = true })
 
     -- Optional: Additional useful mappings
-    vim.keymap.set('t', 'q', '<C-\\><C-n>:FloatermHide<CR>', { silent = true })
+    vim.keymap.set('t', 'qq', '<C-\\><C-n>:FloatermHide<CR>', { silent = true })
   end
 }
