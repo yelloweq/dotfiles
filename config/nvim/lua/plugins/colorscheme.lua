@@ -1,0 +1,1 @@
+/home/yelloweq/.config/omarchy/current/theme/neovim.lua
