@@ -22,7 +22,7 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- paste over currently selected text without yanking it
-vim.keymap.set("v", "p", '"_dp')
+vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("v", "P", '"_dP')
 
 -- copy everything between { and } including the brackets
@@ -58,7 +58,7 @@ vim.keymap.set("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> norm
 vim.keymap.set("n", "<C-x>", "dd", opts)
 
 -- Select all
-vim.keymap.set("n", "<C-a>", "ggVG", opts)
+vim.keymap.set("n", "<g-a>", "ggVG", opts)
 
 vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
