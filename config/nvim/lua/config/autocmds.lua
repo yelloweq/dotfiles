@@ -63,8 +63,21 @@ vim.api.nvim_create_autocmd("FileType", {
 -- resize neovim split when terminal is resized
 vim.api.nvim_command("autocmd VimResized * wincmd =")
 
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        pcall(vim.treesitter.start)
-    end,
+-- vim.api.nvim_create_autocmd("FileType", {
+--     callback = function()
+--         pcall(vim.treesitter.start)
+--     end,
+-- })
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+  callback = function(args)
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+    if ok and stats and stats.size > 1024 * 1024 then
+      vim.b[args.buf].bigfile = true
+      vim.opt_local.swapfile = false
+      vim.opt_local.undofile = false
+      vim.opt_local.foldmethod = "manual"
+      vim.opt_local.syntax = "off"
+    end
+  end,
 })

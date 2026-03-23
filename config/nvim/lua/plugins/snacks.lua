@@ -1,5 +1,6 @@
 return {
   "folke/snacks.nvim",
+  event = 'VeryLazy',
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -10,7 +11,7 @@ return {
     indent = { enabled = false },
     input = { enabled = true },
     notifier = {
-      enabled = true,
+      enabled = false,
       timeout = 3000,
     },
     picker = {
@@ -23,7 +24,7 @@ return {
     scope = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
-    words = { enabled = true },
+    words = { enabled = false },
     styles = {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications

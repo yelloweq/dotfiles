@@ -2,10 +2,6 @@ return {
   cmd = { 'vscode-html-language-server', '--stdio' },
   filetypes = {
     'html',
-    'blade',
-    'javascriptreact',
-    'typescriptreact',
-    'svelte',
   },
   root_markers = { 'package.json', 'index.html', '.git' },
   settings = {},

@@ -21,11 +21,11 @@ require("lazy").setup({ import = "plugins" }, {
     colorscheme = { "habamax" }
   },
   checker = {
-    enabled = true,
+    enabled = false,
     notify = false,
   },
   change_detection = {
-    enabled = true,
+    enabled = false,
     notify = false,
   },
   ui = {
@@ -44,5 +44,11 @@ require("lazy").setup({ import = "plugins" }, {
   },
 })
 
+vim.lsp.set_log_level("ERROR")
 
+vim.filetype.add({
+  pattern = {
+    [".*%.blade%.php"] = "blade",
+  },
+})
 

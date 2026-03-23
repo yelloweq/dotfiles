@@ -30,10 +30,6 @@ vim.keymap.set("v", "P", '"_dP')
 -- P puts text before the cursor.
 vim.keymap.set("n", "YY", "va{Vy", opts)
 
--- Move line on the screen rather than by line in the file
-vim.keymap.set("n", "j", "gj", opts)
-vim.keymap.set("n", "k", "gk", opts)
-
 -- Navigate buffers
 vim.keymap.set("n", "<Right>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<Left>", ":bprevious<CR>", opts)

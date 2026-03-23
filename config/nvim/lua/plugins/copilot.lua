@@ -1,7 +1,7 @@
 return {
   {
     'github/copilot.vim',
-    enabled = true,
+    enabled = false,
     cmd = 'Copilot',
     build = ':Copilot auth',
     event = 'InsertEnter',

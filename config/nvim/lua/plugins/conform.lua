@@ -42,6 +42,7 @@ return {
 
       -- PHP/Laravel
       php = { 'pint' },
+      blade = { 'blade_formatter' },
 
       -- Shell
       sh = { 'shfmt' },
@@ -58,10 +59,15 @@ return {
     default_format_opts = {
       lsp_format = 'fallback',
     },
-    -- format_on_save = {
-    --     timeout_ms = 1000,
-    --     lsp_format = "fallback",
-    -- },
+    format_on_save = function(bufnr)
+      local ft = vim.bo[bufnr].filetype
+      if ft == 'php' or ft == 'blade' then
+        return {
+          timeout_ms = 2000,
+          lsp_format = 'fallback',
+        }
+      end
+    end,
   },
   init = function()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
