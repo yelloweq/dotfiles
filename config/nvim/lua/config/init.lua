@@ -1,6 +1,0 @@
-require 'config.options'
-require 'config.keymaps'
-require 'config.autocmds'
-require 'config.health-check'
-require 'config.icons'
-require 'config.lsp'

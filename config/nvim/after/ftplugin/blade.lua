@@ -1,0 +1,64 @@
+-- -- after/ftplugin/blade.lua
+-- local ok, otter = pcall(require, 'otter')
+-- if not ok then
+--   vim.notify('otter.nvim not installed', vim.log.levels.WARN)
+--   return
+-- end
+--
+-- -- 1. make sure the buffer is parsed *at all*
+-- vim.treesitter.start()   -- will use the installed blade parser
+--
+-- -- 2. tell otter which ranges are PHP (simple text-based fallback)
+-- --    (If you have a better treesitter query use it, but this always works.)
+-- local php_ranges = {}
+-- local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+-- for lnum, line in ipairs(lines) do
+--   if line:match('^%s*<%?php') then
+--     local start_col = line:find('<%?php') - 1
+--     -- look for the closing ?>
+--     local end_lnum, end_col
+--     for i = lnum, #lines do
+--       local close = lines[i]:find('%?>')
+--       if close then
+--         end_lnum  = i - 1
+--         end_col   = close + 1
+--         break
+--       end
+--     end
+--     if end_lnum then
+--       table.insert(php_ranges, {
+--         ['start'] = { line = lnum - 1, character = start_col },
+--         ['end']   = { line = end_lnum, character = end_col },
+--       })
+--     end
+--   end
+-- end
+--
+-- -- 3. activate otter only for those PHP ranges
+-- otter.sync_runs = true   -- keep diagnostics in sync
+-- otter.activate({
+--   languages = { 'php' },
+--   buffer    = 0,          -- current buffer
+--   ranges    = php_ranges, -- explicit PHP islands
+--   lsp       = {
+--     php = {
+--       -- exact same command you already use
+--       cmd = { 'intelephense', '--stdio' },
+--       init_options = {
+--         licenceKey = (function()
+--           local f = io.open(os.getenv 'HOME' .. '/intelephense/license.txt', 'rb')
+--           return f and f:read('*a'):gsub('%s+', '') or ''
+--         end)(),
+--       },
+--       settings = {
+--         intelephense = {
+--           files = { exclude = { '**/vendor/**', '**/node_modules/**' } },
+--         },
+--       },
+--     },
+--   },
+-- })
+--
+-- -- 4. (optional) keep blade snippets working
+-- vim.bo.commentstring = '{{-- %s --}}'
+--
