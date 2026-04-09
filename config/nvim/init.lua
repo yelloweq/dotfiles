@@ -467,6 +467,13 @@ packadd("blade-nav.nvim")
 local setup_treesitter = function()
     local treesitter = require("nvim-treesitter")
     treesitter.setup({})
+    local function warn_treesitter_cli_missing()
+        vim.notify_once(
+            "nvim-treesitter: tree-sitter CLI not found; skipping parser installs. Install tree-sitter-cli, then run :TSUpdate.",
+            vim.log.levels.WARN
+        )
+    end
+
     local ensure_installed = {
         "vim",
         "vimdoc",
@@ -501,7 +508,11 @@ local setup_treesitter = function()
     end
 
     if #parsers_to_install > 0 then
-        treesitter.install(parsers_to_install)
+        if vim.fn.executable("tree-sitter") == 1 then
+            treesitter.install(parsers_to_install)
+        else
+            warn_treesitter_cli_missing()
+        end
     end
 
     local group = vim.api.nvim_create_augroup("TreeSitterConfig", { clear = true })
